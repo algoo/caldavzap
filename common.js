@@ -411,6 +411,8 @@ function resourceChBoxClick(obj, resourceListSelector, headerSelector, returnChe
 		return dataGetChecked(resourceListSelector);
 }
 
+/* Automaticly checked the workspace's checkbox */
+
 function collectionChBoxClick(obj, resourceListSelector, headerSelector, collectionSelector, groupSelector, returnChecked)
 {
 	if(collectionSelector.match('_item$'))

@@ -2721,3 +2721,15 @@ img[data-type="invalidVerySmall"]
 .integration_d {
 	display: none !important;
 }
+
+.priorityrow {
+	display: none;
+}
+
+.row_type{
+	display: none;
+}
+
+.row_avail{
+	display: none;
+}

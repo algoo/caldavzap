@@ -1765,13 +1765,15 @@ function showEventForm(date, allDay, calEvent, jsEvent, mod, repeatOne, confirmR
 		var afterScroll = $('#main').width()-$('#calendar').width();
 		rerenderCalendar(beforeScroll!=afterScroll);
 
-		if(allDay)
-		{
-			$('#allday').prop('checked', true);
-			$('#time_from_cell').css('visibility', 'hidden');
-			$('#time_to_cell').css('visibility', 'hidden');
-			$('.timezone_row').css('display', 'none');
-		}
+		/* Automaticly checked the allday checkbox */
+
+		// if(allDay)
+		// {
+		// 	$('#allday').prop('checked', true);
+		// 	$('#time_from_cell').css('visibility', 'hidden');
+		// 	$('#time_to_cell').css('visibility', 'hidden');
+		// 	$('.timezone_row').css('display', 'none');
+		// }
 		showTimezones('', '');
 	}
 

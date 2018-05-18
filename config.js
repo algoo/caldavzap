@@ -7,7 +7,7 @@ var globalAccountSettings=[
         userAuth:
         {
             userName: 'alexi.cauvin@algoo.fr',
-            userPassword: 'c60e7504-928c-4c81-84f4-e8d1db7f9a0d'
+            userPassword: '4c7e9747-a51e-4b20-b419-a9bcce499afc'
         },
         timeOut: 90000,
         lockTimeOut: 10000,

@@ -446,30 +446,30 @@ function bindColorPickerClick(newElement)
 		var resourceSelectedClass=null;
 		var resourceItems=null;
 
-		if(newElement.parent().hasClass('resourceCalDAV_item'))
-		{
-			if(globalEventCollectionsLoading)
-				return false;
-			collectionType='event';
-			resourceSelectedClass='resourceCalDAV_item_selected';
-			resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
-		}
-		else if(newElement.parent().hasClass('resourceCalDAVTODO_item'))
-		{
-			if(globalTodoCollectionsLoading)
-				return false;
-			collectionType='todo';
-			resourceSelectedClass='resourceCalDAV_item_selected';
-			resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
-		}
-		else if(newElement.hasClass('resourceCardDAVColor'))
-		{
-			if(globalAddressbookCollectionsLoading)
-				return false;
-			collectionType='addressbook';
-			resourceSelectedClass='resourceCardDAV_selected';
-			resourceItems=newElement.parent().parent().siblings().find('.resourceCardDAV_selected');
-		}
+		// if(newElement.parent().hasClass('resourceCalDAV_item'))
+		// {
+		// 	if(globalEventCollectionsLoading)
+		// 		return false;
+		// 	collectionType='event';
+		// 	resourceSelectedClass='resourceCalDAV_item_selected';
+		// 	resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
+		// }
+		// else if(newElement.parent().hasClass('resourceCalDAVTODO_item'))
+		// {
+		// 	if(globalTodoCollectionsLoading)
+		// 		return false;
+		// 	collectionType='todo';
+		// 	resourceSelectedClass='resourceCalDAV_item_selected';
+		// 	resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
+		// }
+		// else if(newElement.hasClass('resourceCardDAVColor'))
+		// {
+		// 	if(globalAddressbookCollectionsLoading)
+		// 		return false;
+		// 	collectionType='addressbook';
+		// 	resourceSelectedClass='resourceCardDAV_selected';
+		// 	resourceItems=newElement.parent().parent().siblings().find('.resourceCardDAV_selected');
+		// }
 
 		var showInput = event.shiftKey;
 		var colorpicker=$(this).siblings('.colorPicker');

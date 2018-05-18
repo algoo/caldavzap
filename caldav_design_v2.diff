@@ -1,0 +1,176 @@
+diff --git a/cache.manifest b/cache.manifest
+index 98e6436..eb67f55 100644
+--- a/cache.manifest
++++ b/cache.manifest
+@@ -1,7 +1,8 @@
+ CACHE MANIFEST
+-#V 20160906103401
+-
++#V 20180518113801
++   
+ CACHE:
++
+ common.js
+ config.js
+ data_process.js
+diff --git a/common.js b/common.js
+index 04f3194..a0524dc 100644
+--- a/common.js
++++ b/common.js
+@@ -411,6 +411,8 @@ function resourceChBoxClick(obj, resourceListSelector, headerSelector, returnChe
+ 		return dataGetChecked(resourceListSelector);
+ }
+ 
++/* Automaticly checked the workspace's checkbox */
++
+ function collectionChBoxClick(obj, resourceListSelector, headerSelector, collectionSelector, groupSelector, returnChecked)
+ {
+ 	if(collectionSelector.match('_item$'))
+diff --git a/config.js b/config.js
+index 3105dae..e544345 100644
+--- a/config.js
++++ b/config.js
+@@ -7,7 +7,7 @@ var globalAccountSettings=[
+         userAuth:
+         {
+             userName: 'alexi.cauvin@algoo.fr',
+-            userPassword: 'c60e7504-928c-4c81-84f4-e8d1db7f9a0d'
++            userPassword: '4c7e9747-a51e-4b20-b419-a9bcce499afc'
+         },
+         timeOut: 90000,
+         lockTimeOut: 10000,
+diff --git a/css/default.css b/css/default.css
+index a6f4599..5607ea7 100644
+--- a/css/default.css
++++ b/css/default.css
+@@ -2720,4 +2720,16 @@ img[data-type="invalidVerySmall"]
+ 
+ .integration_d {
+ 	display: none !important;
+-}
+\ No newline at end of file
++}
++
++.priorityrow {
++	display: none;
++}
++
++.row_type{
++	display: none;
++}
++
++.row_avail{
++	display: none;
++}
+diff --git a/forms.js b/forms.js
+index 4410e88..304f2f7 100644
+--- a/forms.js
++++ b/forms.js
+@@ -1765,13 +1765,15 @@ function showEventForm(date, allDay, calEvent, jsEvent, mod, repeatOne, confirmR
+ 		var afterScroll = $('#main').width()-$('#calendar').width();
+ 		rerenderCalendar(beforeScroll!=afterScroll);
+ 
+-		if(allDay)
+-		{
+-			$('#allday').prop('checked', true);
+-			$('#time_from_cell').css('visibility', 'hidden');
+-			$('#time_to_cell').css('visibility', 'hidden');
+-			$('.timezone_row').css('display', 'none');
+-		}
++		/* Automaticly checked the allday checkbox */
++
++		// if(allDay)
++		// {
++		// 	$('#allday').prop('checked', true);
++		// 	$('#time_from_cell').css('visibility', 'hidden');
++		// 	$('#time_to_cell').css('visibility', 'hidden');
++		// 	$('.timezone_row').css('display', 'none');
++		// }
+ 		showTimezones('', '');
+ 	}
+ 
+diff --git a/index.html b/index.html
+index 8a2dbb1..dd8cd92 100644
+--- a/index.html
++++ b/index.html
+@@ -541,7 +541,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ 								</select>
+ 							</td>
+ 						</tr>
+-						<tr>
++						<tr class="priorityrow">
+ 							<td class="label"><label data-type="priority" for="priority">priority: </label></td>
+ 							<td colspan="2" data-size="full">
+ 								<select class="long " name="priority" id="priority">
+diff --git a/index.tracim.html b/index.tracim.html
+index 7aceafd..5a27b85 100644
+--- a/index.tracim.html
++++ b/index.tracim.html
+@@ -541,7 +541,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ 								</select>
+ 							</td>
+ 						</tr>
+-						<tr>
++						<tr class="priorityrow">
+ 							<td class="label"><label data-type="priority" for="priority">priority: </label></td>
+ 							<td colspan="2" data-size="full">
+ 								<select class="long " name="priority" id="priority">
+diff --git a/main.js b/main.js
+index 87fc99e..0929a67 100644
+--- a/main.js
++++ b/main.js
+@@ -446,30 +446,30 @@ function bindColorPickerClick(newElement)
+ 		var resourceSelectedClass=null;
+ 		var resourceItems=null;
+ 
+-		if(newElement.parent().hasClass('resourceCalDAV_item'))
+-		{
+-			if(globalEventCollectionsLoading)
+-				return false;
+-			collectionType='event';
+-			resourceSelectedClass='resourceCalDAV_item_selected';
+-			resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
+-		}
+-		else if(newElement.parent().hasClass('resourceCalDAVTODO_item'))
+-		{
+-			if(globalTodoCollectionsLoading)
+-				return false;
+-			collectionType='todo';
+-			resourceSelectedClass='resourceCalDAV_item_selected';
+-			resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
+-		}
+-		else if(newElement.hasClass('resourceCardDAVColor'))
+-		{
+-			if(globalAddressbookCollectionsLoading)
+-				return false;
+-			collectionType='addressbook';
+-			resourceSelectedClass='resourceCardDAV_selected';
+-			resourceItems=newElement.parent().parent().siblings().find('.resourceCardDAV_selected');
+-		}
++		// if(newElement.parent().hasClass('resourceCalDAV_item'))
++		// {
++		// 	if(globalEventCollectionsLoading)
++		// 		return false;
++		// 	collectionType='event';
++		// 	resourceSelectedClass='resourceCalDAV_item_selected';
++		// 	resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
++		// }
++		// else if(newElement.parent().hasClass('resourceCalDAVTODO_item'))
++		// {
++		// 	if(globalTodoCollectionsLoading)
++		// 		return false;
++		// 	collectionType='todo';
++		// 	resourceSelectedClass='resourceCalDAV_item_selected';
++		// 	resourceItems=newElement.parent().siblings('.resourceCalDAV_item_selected');
++		// }
++		// else if(newElement.hasClass('resourceCardDAVColor'))
++		// {
++		// 	if(globalAddressbookCollectionsLoading)
++		// 		return false;
++		// 	collectionType='addressbook';
++		// 	resourceSelectedClass='resourceCardDAV_selected';
++		// 	resourceItems=newElement.parent().parent().siblings().find('.resourceCardDAV_selected');
++		// }
+ 
+ 		var showInput = event.shiftKey;
+ 		var colorpicker=$(this).siblings('.colorPicker');
